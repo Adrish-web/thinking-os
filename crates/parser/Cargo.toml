@@ -1,0 +1,12 @@
+[package]
+name = "parser"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+semantic-ir = { path = "../semantic-ir" }
+pulldown-cmark = "0.10"
+regex = "1.10"
+lazy_static = "1.4"
+sha2 = "0.10"
+hex = "0.4"

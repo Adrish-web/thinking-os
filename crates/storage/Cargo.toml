@@ -1,0 +1,9 @@
+[package]
+name = "storage"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+semantic-ir = { path = "../semantic-ir" }
+rusqlite = { version = "0.31.0", features = ["bundled"] }
+serde_json = "1.0"
