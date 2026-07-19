@@ -1,4 +1,42 @@
-/target
-node_modules/
+# macOS
+.DS_Store
+
+# Rust
+target/
+
+# Python
 __pycache__/
-*.db
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Cargo
+**/*.rs.bk
+Cargo.lock
+# Uncomment if publishing binaries only
+# !Cargo.lock
+
+# Temporary files
+tmp/
+*.tmp
