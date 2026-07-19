@@ -1,108 +1,103 @@
 # ThinkingOS
 
-> **An open-source operating system for thinking.**
->
-> ThinkingOS is a local-first knowledge and reasoning engine designed to help researchers, students, engineers, and lifelong learners build, connect, and reason over knowledge—not just store notes.
+> **An open-source, local-first operating system for knowledge and reasoning.**
+
+ThinkingOS is a knowledge engine designed to help people **understand, connect, and reason over information** rather than simply store it. It combines structured knowledge representation, semantic search, event sourcing, and optional AI-assisted reasoning into a unified platform for research and learning.
+
+The project is built around a simple idea:
+
+> **Knowledge compounds when it is connected. Intelligence emerges when those connections can be explored, questioned, and refined.**
 
 ---
 
-## Vision
+# Why ThinkingOS?
 
-Most knowledge management tools optimize for **collecting information**.
+Modern knowledge tools excel at collecting information but often leave the reasoning process to the user.
 
-ThinkingOS is designed to optimize for **thinking**.
+ThinkingOS aims to bridge that gap by providing infrastructure for:
 
-Instead of asking:
+* Building structured knowledge graphs from notes and documents
+* Discovering semantic relationships between ideas
+* Retrieving relevant context for complex questions
+* Recording reasoning as reproducible, inspectable workflows
+* Supporting AI-assisted synthesis without depending on proprietary services
 
-> *"Where did I save this note?"*
-
-ThinkingOS helps answer:
-
-* What do I already know?
-* How are these ideas connected?
-* What evidence supports this claim?
-* Where are the contradictions?
-* What am I missing?
-* What should I learn next?
-
-The long-term goal is to build a personal reasoning system that grows with its user.
+The objective is not to replace human thinking, but to augment it.
 
 ---
 
-# Core Principles
+# Design Principles
 
-### 🧠 Thinking First
+## Local-First
 
-Knowledge is valuable only when it improves reasoning.
+Your knowledge should remain under your control.
 
-ThinkingOS is built around planning, synthesis, evidence, and understanding—not note storage alone.
-
----
-
-### 🌐 Local First
-
-Your knowledge belongs to you.
-
-The entire core system works offline.
-
-No account.
-
-No subscription.
-
-No mandatory cloud services.
+The core engine is designed to function entirely offline. Cloud-based language models are optional enhancements, not requirements.
 
 ---
 
-### 🔌 AI Optional
+## Open by Design
 
-Large language models are plugins—not dependencies.
+ThinkingOS is developed as an open-source platform with transparent architecture, extensible interfaces, and reproducible reasoning.
 
-ThinkingOS should remain useful without any external AI.
+---
+
+## Graph-Centric
+
+Information is represented as interconnected entities rather than isolated documents.
+
+Concepts, claims, evidence, questions, papers, and experiments become part of a navigable knowledge graph.
+
+---
+
+## Reproducible Reasoning
+
+Every reasoning session can be recorded as an immutable sequence of events.
+
+This enables provenance, auditability, replay, and continuous refinement.
+
+---
+
+## AI as an Enhancement
+
+Large language models are treated as interchangeable providers rather than core dependencies.
 
 Supported providers may include:
 
-* Local models (Ollama)
+* Ollama (local)
 * Anthropic Claude
 * OpenAI
-* Gemini
-* Future providers
+* Google Gemini
+* Additional providers through a common interface
 
-The reasoning engine never depends on a specific model.
-
----
-
-### 📖 Open Source
-
-ThinkingOS is built in the open.
-
-The architecture is intended to be transparent, extensible, and community-driven.
+Without an AI provider, ThinkingOS still supports parsing, indexing, graph construction, search, traversal, and event management.
 
 ---
 
 # Architecture
 
 ```text
-                ThinkingOS
+                    ThinkingOS
 
-                     │
-        ┌────────────┴────────────┐
-        │                         │
-   Knowledge Engine          AI Providers
-        │                         │
-        │                  Claude / GPT
-        │                  Gemini
-        │                  Ollama
-        │
- ┌─────────────────────────────────────┐
- │ Parser                              │
- │ Knowledge Graph                     │
- │ Ontology                            │
- │ Search                              │
- │ Event Store                         │
- │ Planner                             │
- │ Reasoning Engine                    │
- └─────────────────────────────────────┘
+                           │
+         ┌─────────────────┴─────────────────┐
+         │                                   │
+  Knowledge Infrastructure           AI Providers
+         │                                   │
+         │                       Ollama / Claude
+         │                       OpenAI / Gemini
+         │
+ ┌─────────────────────────────────────────────────┐
+ │ Markdown Parser                                 │
+ │ Knowledge Graph                                 │
+ │ Ontology                                        │
+ │ Search & Retrieval                              │
+ │ Event Store                                     │
+ │ Planning & Reasoning                            │
+ └─────────────────────────────────────────────────┘
 ```
+
+The system separates **knowledge representation** from **reasoning**, allowing the core platform to evolve independently of any specific AI model.
 
 ---
 
@@ -111,7 +106,7 @@ The architecture is intended to be transparent, extensible, and community-driven
 ```text
 thinking-os/
 
-├── crates/             # Rust core libraries
+├── crates/                 # Rust core libraries
 │   ├── graph/
 │   ├── ontology/
 │   ├── reasoning/
@@ -136,39 +131,70 @@ thinking-os/
 
 ---
 
-# Current Features
+# Current Capabilities
 
-* Markdown parsing
+The current prototype includes:
+
+* Markdown document parsing
 * Knowledge graph construction
-* Graph search
-* Event-sourced history
-* Local reasoning pipeline
+* Graph traversal and keyword search
+* Event-sourced knowledge history
+* Modular reasoning pipeline
 * Pluggable AI provider interface
-* Python prototype
-* Rust core libraries
+* Python orchestration layer
+* Rust core workspace
+
+The project is under active development and APIs may evolve.
+
+---
+
+# Technology Stack
+
+### Rust
+
+Responsible for performance-critical infrastructure:
+
+* Graph engine
+* Storage
+* Search
+* Query execution
+* Future production runtime
+
+### Python
+
+Used for:
+
+* Rapid prototyping
+* AI orchestration
+* Research workflows
+* Experimentation
+* Integration with external tooling
+
+The long-term architecture keeps Python focused on orchestration while Rust provides the production engine.
 
 ---
 
 # Roadmap
 
-## Phase 1 — Knowledge Engine
+### Phase 1 — Knowledge Infrastructure
 
-* Markdown parser
-* Graph construction
+* Markdown parsing
+* Knowledge graph
 * Search
 * Event sourcing
-* CLI
+* Command-line interface
 
-## Phase 2 — Semantic Knowledge
+### Phase 2 — Semantic Representation
 
 * Typed ontology
 * Claims
 * Evidence
-* Papers
 * Questions
+* Papers
 * Experiments
+* Datasets
 
-## Phase 3 — Reasoning
+### Phase 3 — Reasoning Engine
 
 * Multi-step planning
 * Evidence retrieval
@@ -176,88 +202,49 @@ thinking-os/
 * Contradiction detection
 * Knowledge synthesis
 
-## Phase 4 — Research Workspace
+### Phase 4 — Integrations
 
-* Interactive graph
-* Obsidian integration
+* Interactive graph visualization
+* Obsidian plugin
 * VS Code extension
 * Web interface
+* MCP support
 
-## Phase 5 — Thinking OS
+### Phase 5 — ThinkingOS
 
-A system that continuously helps users:
-
-* organize knowledge
-* understand ideas
-* discover connections
-* identify gaps
-* develop better reasoning
-
----
-
-# Design Philosophy
-
-ThinkingOS separates **knowledge representation** from **intelligence**.
-
-The knowledge graph is the source of truth.
-
-Reasoning is reproducible.
-
-AI enhances the process but does not replace it.
-
-This allows the system to remain useful regardless of which language models are available in the future.
-
----
-
-# Why Rust + Python?
-
-**Rust**
-
-* High-performance graph engine
-* Storage
-* Search
-* Query execution
-* Long-term production runtime
-
-**Python**
-
-* Rapid prototyping
-* AI orchestration
-* Research workflows
-* Experimentation
-* Notebook integration
-
-The public APIs are designed so that Python can orchestrate the system while the performance-critical components live in Rust.
+A complete platform for research, learning, writing, and scientific reasoning that remains local-first, extensible, and accessible.
 
 ---
 
 # Contributing
 
-ThinkingOS is still in its early stages.
+ThinkingOS is in its early stages, and contributions are welcome.
 
-Contributions are welcome in areas including:
+Areas of interest include:
 
 * Graph algorithms
-* Information retrieval
 * Knowledge representation
-* Scientific workflows
-* Local AI integration
-* Developer tooling
+* Information retrieval
+* Semantic search
+* Reasoning systems
+* Rust infrastructure
+* Python tooling
 * Documentation
 * Testing
+* Developer experience
 
-Please open an issue before implementing major architectural changes.
+Please open an issue before proposing significant architectural changes.
 
 ---
 
-# Long-Term Goal
+# Philosophy
 
-Build an open, local-first, extensible platform that helps people think more clearly—not just collect more information.
+ThinkingOS is built on the belief that the future of personal knowledge management is not about storing more information—it is about improving how we think.
 
-If successful, ThinkingOS should become a foundation for research, learning, writing, and scientific discovery that remains accessible to everyone, with optional AI enhancements rather than mandatory cloud dependencies.
+By combining structured knowledge, transparent reasoning, and optional AI assistance, the project aims to provide an open foundation for deeper learning, better research, and more effective decision-making.
 
 ---
 
 ## License
 
-This project will be released under a permissive open-source license (to be decided).
+This project will be released under a permissive open-source license.
