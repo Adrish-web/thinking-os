@@ -1,5 +1,15 @@
 # ThinkingOS
 
+![CI](https://github.com/YOUR_USERNAME/thinking-os/actions/workflows/ci.yml/badge.svg)
+
+![Rust](https://img.shields.io/badge/Rust-1.80+-black?logo=rust)
+
+![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)
+
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+![Status](https://img.shields.io/badge/status-active_development-blue)
+
 > **An open-source, local-first operating system for knowledge and reasoning.**
 
 ThinkingOS is a knowledge engine designed to help people **understand, connect, and reason over information** rather than simply store it. It combines structured knowledge representation, semantic search, event sourcing, and optional AI-assisted reasoning into a unified platform for research and learning.
